@@ -1,9 +1,8 @@
 <template>
   <div class="gif-holder">
     <div v-for="gif in gifSubject" class="img-holder">
-      <img v-bind:src="gif.images.original.url" alt="" class="gif-img">
+      <img v-bind:src="gif.images.downsized.url" alt="" class="gif-img">
     </div>
-    <!-- {{ gifSubject[0].images.fixed_height.url }} -->
   </div>
 </template>
 
@@ -13,7 +12,6 @@ export default {
   props: ['gifSubject'],
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
     }
   }
 }
@@ -40,9 +38,12 @@ export default {
 
     .img-holder {
       height: $tile-height;
+      width: $tile-width;
 
       .gif-img {
         height: 100%;
+        width: 100%;
+        object-fit: cover;
       }
     }
   }

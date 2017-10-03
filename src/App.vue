@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <div class="search-fields">
-      <h1>Bunch-O-Kitties</h1>
+      <h1>Bunch-O-Kitties 2.0</h1>
       <h2>GIF stress</h2>
-      <!-- <input type="text" v-model="searchTerm" placeholder="Search Term"> -->
-      <!-- <button type="button" name="button" v-on:click="searchGif">Search</button> -->
+      <input type="text" v-model="searchTerm" placeholder="Search Term">
+      <button type="button" name="button" v-on:click="searchGif">Search</button>
     </div>
     <gif-holder v-bind:gifSubject="searchResponse"></gif-holder>
     <div class="test-wrapper"></div>
@@ -13,8 +13,10 @@
 
 <script>
 import GifHolder from './components/GifHolder'
+import _ from 'lodash'
 
 const key = '28a10c5337904e8fa4f600bda2469814'
+const ranOffset = _.random(0, 91)
 
 export default {
   name: 'app',
@@ -31,19 +33,19 @@ export default {
     searchGif () {
       fetch(
         'https://api.giphy.com/v1/gifs/search?api_key=' + key +
-        '&q=' + this.searchTerm + '&limit=100&offset=5&rating=G&lang=en'
+        '&q=' + this.searchTerm + '&limit=91&offset=' + ranOffset + '&rating=G&lang=en'
       )
       .then(response => response.json())
-      .then(data => { this.searchResponse = data.data })
+      .then(data => { this.searchResponse = _.shuffle(data.data) })
     }
   },
   mounted () {
     fetch(
       'https://api.giphy.com/v1/gifs/search?api_key=' + key +
-      '&q=kittens&limit=100&offset=5&rating=G&lang=en'
+      '&q=kittens&limit=91&offset=' + ranOffset + '&rating=G&lang=en'
     )
     .then(response => response.json())
-    .then(data => { this.searchResponse = data.data })
+    .then(data => { this.searchResponse = _.shuffle(data.data) })
   }
 }
 </script>
