@@ -7,7 +7,7 @@
       <button type="button" name="button" v-on:click="searchGif">Search</button>
     </div>
     <gif-holder v-bind:gifSubject="searchResponse"></gif-holder>
-    <div class="test-wrapper"></div>
+    <!-- <div class="test-wrapper"></div> -->
   </div>
 </template>
 
@@ -70,6 +70,9 @@ $immersion-height: 2240px;
 $tile-width: 426px;
 $tile-height: 320px;
 
+$demo-wall-width: 3840px;
+$demo-wall-height: 2160px;
+
 $grid-columns: 16;
 $grid-rows: 7;
 
@@ -80,6 +83,15 @@ $grid-rows: 7;
 
   input, button {
     font-size: 5vh;
+  }
+
+  @media (width: $demo-wall-width) {
+    width: 10%;
+    font-size: 2vh;
+
+    input, button {
+      font-size: 2vh;
+    }
   }
 }
 

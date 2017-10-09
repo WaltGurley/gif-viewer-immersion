@@ -25,6 +25,9 @@ export default {
   $tile-width: 426px;
   $tile-height: 320px;
 
+  $demo-wall-width: 3840px;
+  $demo-wall-height: 2160px;
+
   $grid-columns: 16;
   $grid-rows: 7;
 
@@ -33,12 +36,27 @@ export default {
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: flex-start;
-    width: $tile-width * 13;
     height: 100%;
 
+    @media (width: 6816px) {
+      width: $tile-width * 13;
+    }
+
+    @media (width: 3840px) {
+      width: $demo-wall-width;
+    }
+
     .img-holder {
-      height: $tile-height;
-      width: $tile-width;
+
+      @media (width: 6816px) {
+        height: $tile-height;
+        width: $tile-width;
+      }
+
+      @media (width: 3840px) {
+        width: $demo-wall-width / 10;
+        height: $demo-wall-height / 8;
+      }
 
       .gif-img {
         height: 100%;

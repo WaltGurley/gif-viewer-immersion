@@ -21,4 +21,10 @@ npm run build --report
 npm install sass-loader node-sass --save-dev
 ```
 
+## Note for this build:
+
+Changed assets path in /config/index.js for correct reference to resources on GitHub pages:
+
+`assetsPublicPath: '/' --> assetsPublicPath: './'`
+
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
